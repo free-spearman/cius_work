@@ -1,0 +1,43 @@
+## LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+## Bibliography
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+## Build output
+*.pdf
+
+## Indices
+*.idx
+*.ilg
+*.ind
+
+## Misc
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

@@ -1,0 +1,130 @@
+%%% Кодировка и язык
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+%%% Шрифты
+\usepackage{tempora}  % Times-подобный шрифт с поддержкой кириллицы
+\usepackage[bigdelims,vvarbb]{newtxmath}
+
+%%% Геометрия страницы (требования МГУ)
+\usepackage[
+    left=30mm,
+    right=15mm,
+    top=20mm,
+    bottom=20mm
+]{geometry}
+
+%%% Межстрочный интервал
+\usepackage{setspace}
+\onehalfspacing
+
+%%% Абзацный отступ
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+%%% Заголовки глав и разделов
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+    {\normalfont\Large\bfseries\centering}
+    {\thechapter.~}{0pt}{}
+\titleformat{\section}[block]
+    {\normalfont\large\bfseries}
+    {\thesection.~}{0pt}{}
+\titleformat{\subsection}[block]
+    {\normalfont\normalsize\bfseries}
+    {\thesubsection.~}{0pt}{}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+%%% Нумерация страниц
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%%% Содержание
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+%%% Математика
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+%%% Графика и рисунки
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{labelsep=endash, justification=centering}
+
+%%% Таблицы
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+
+%%% Листинги кода
+\usepackage{listings}
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    tabsize=4,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={а}{{\cyra}}1 {б}{{\cyrb}}1 {в}{{\cyrv}}1 {г}{{\cyrg}}1
+             {д}{{\cyrd}}1 {е}{{\cyre}}1 {ж}{{\cyrzh}}1 {з}{{\cyrz}}1
+             {и}{{\cyri}}1 {й}{{\cyrishrt}}1 {к}{{\cyrk}}1 {л}{{\cyrl}}1
+             {м}{{\cyrm}}1 {н}{{\cyrn}}1 {о}{{\cyro}}1 {п}{{\cyrp}}1
+             {р}{{\cyrr}}1 {с}{{\cyrs}}1 {т}{{\cyrt}}1 {у}{{\cyru}}1
+             {ф}{{\cyrf}}1 {х}{{\cyrh}}1 {ц}{{\cyrc}}1 {ч}{{\cyrch}}1
+             {ш}{{\cyrsh}}1 {щ}{{\cyrshch}}1 {э}{{\cyrerev}}1
+             {ю}{{\cyryu}}1 {я}{{\cyrya}}1
+}
+
+%%% Библиография (biblatex + biber)
+\usepackage[
+    backend=biber,
+    style=gost-numeric,
+    sorting=nyt,
+    language=autobib,
+    autolang=other
+]{biblatex}
+\addbibresource{references.bib}
+
+%%% Гиперссылки 
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+]{hyperref}
+
+%%% ============================================================
+%%% Данные о работе 
+%%% ============================================================
+
+\newcommand{\WorkType}{Магистерская диссертация}
+\newcommand{\WorkTitle}{Исследование и разработка алгоритма построения рекомендаций с использованием контекстной и сессионной информации пользователя}
+\newcommand{\AuthorName}{Бадекин Илья Иванович}
+\newcommand{\AuthorGroup}{XXX}
+\newcommand{\SupervisorName}{Ильюшин Е.А.}
+\newcommand{\SupervisorTitle}{Ассистент}
+\newcommand{\ReviewerName}{Фамилия И.О.}
+\newcommand{\ReviewerTitle}{к.ф.-м.н., доцент}
+\newcommand{\DepartmentName}{кафедра информационной безопасности}
+\newcommand{\FacultyName}{факультет вычислительной математики и кибернетики}
+\newcommand{\UniversityName}{Московский государственный университет имени М.В.~Ломоносова}
+\newcommand{\MasterProgram}{Название магистерской программы}
+\newcommand{\Year}{2026}

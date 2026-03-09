@@ -1,0 +1,35 @@
+\documentclass[a4paper,14pt]{extreport}
+
+%%% Подключение настроек
+\input{config.tex}
+\input{commands.tex}
+
+\begin{document}
+
+%%% Титульная страница
+\input{titlepage.tex}
+
+%%% Содержание
+\tableofcontents
+\newpage
+
+%%% Введение
+\input{chapters/introduction.tex}
+
+%%% Основная часть
+\input{chapters/chapter1.tex}
+\input{chapters/chapter2.tex}
+\input{chapters/chapter3.tex}
+\input{chapters/chapter4.tex}
+
+%%% Заключение
+\input{chapters/conclusion.tex}
+
+%%% Список литературы
+\printbibliography[heading=bibintoc, title={Список литературы}]
+
+%%% Приложения
+\appendix
+\input{appendix/appendix_a.tex}
+
+\end{document}
