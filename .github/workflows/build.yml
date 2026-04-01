@@ -1,0 +1,53 @@
+name: Build Thesis PDF
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build PDF (pdfLaTeX + Biber)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: false
+          latexmk_shell_escape: true
+          args: "-pdf -outdir=build"
+
+      - name: Verify PDF exists
+        run: |
+          PDF="build/main.pdf"
+          if [ ! -f "$PDF" ]; then
+            echo "::error::PDF not found: $PDF"
+            exit 1
+          fi
+          echo "PDF size: $(du -h "$PDF" | cut -f1)"
+
+      - name: Check for warnings
+        if: always()
+        run: |
+          LOG="build/main.log"
+          if [ -f "$LOG" ]; then
+            UNDEF=$(grep -c 'undefined' "$LOG" || true)
+            MISS=$(grep -c 'Citation.*undefined' "$LOG" || true)
+            echo "Undefined references: $UNDEF"
+            echo "Missing citations: $MISS"
+            if [ "$UNDEF" -gt 0 ] || [ "$MISS" -gt 0 ]; then
+              echo "::warning::Found $UNDEF undefined refs, $MISS missing citations"
+            fi
+          fi
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: build/main.pdf
+          retention-days: 30
