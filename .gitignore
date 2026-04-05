@@ -18,6 +18,7 @@
 
 ## Build output
 *.pdf
+!build/main.pdf
 
 ## Indices
 *.idx
